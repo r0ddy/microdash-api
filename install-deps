@@ -1,0 +1,7 @@
+#!/bin/bash
+brew install postgresql
+brew services start postgresql
+createdb microdashdb
+echo 127.0.0.1:5432:microdashdb:microdasher:betterdoordash > ~/.pgpass
+chmod 0600 ~/.pgpass
+createuser microdasher --no-password
