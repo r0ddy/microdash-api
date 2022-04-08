@@ -1,0 +1,2 @@
+#!/bin/bash
+~/cloud_sql_proxy -instances="django-app-346321:us-east1:example-instance"=tcp:5432
