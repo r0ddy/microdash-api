@@ -11,13 +11,15 @@
    brew install postgresql
    ```
 2. Login with gcloud
+
    ```
+   # Choose gmail that you is linked with GCP project
+   gcloud auth login
    gcloud init
    # Enter project id which is django-app-346321
-   gcloud auth login
-   # Choose gmail that you is linked with GCP project
    # Ask Roddy for access.
    ```
+
 3. Start virtual environment and install dependencies.
 
    ```
