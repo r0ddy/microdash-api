@@ -18,14 +18,23 @@ class CentralHubSerializer(serializers.ModelSerializer):
 class EateryNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Eatery
-        fields = [ 'id', 'name' ]
+        fields = [ 'id', 'name', 'photo_url' ]
 
 
 class ItemSerializer(serializers.ModelSerializer):
     eatery = EateryNameSerializer()
     class Meta:
         model = Item
-        fields = [ 'id', 'name', 'price', 'eatery' ]
+        fields = [ 
+            'id',
+            'name',
+            'price',
+            'eatery',
+            'photo_url',
+            'description',
+            'ubereats_price',
+            'doordash_price',
+        ]
 
 
 class EateryItemsSerializer(serializers.ModelSerializer):

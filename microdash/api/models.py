@@ -38,6 +38,9 @@ class Eatery(models.Model):
     def __str__(self):
         return self.name
 
+    def photo_url(self):
+        return self.photo.url if self.photo else ""
+
 
 class Item(models.Model):
     name = models.CharField(max_length=200)
@@ -50,6 +53,9 @@ class Item(models.Model):
 
     def __str__(self):
         return "%s: %s" % (self.eatery.name, self.name)
+
+    def photo_url(self):
+        return self.photo.url if self.photo else ""
 
 
 class Menu(models.Model):
