@@ -15,14 +15,22 @@ django-environ==0.8.1
 django-filter==21.1
 django-money==2.1.1
 django-rest-auth==0.9.5
+django-storages==1.12.3
 djangorestframework==3.13.1
 google-api-core==2.7.1
+google-api-python-client==2.43.0
 google-auth==2.6.2
+google-auth-httplib2==0.1.0
+google-cloud-core==2.2.3
 google-cloud-secret-manager==2.10.0
+google-cloud-storage==2.2.1
+google-crc32c==1.3.0
+google-resumable-media==2.3.2
 googleapis-common-protos==1.56.0
 grpc-google-iam-v1==0.12.4
 grpcio==1.44.0
 grpcio-status==1.44.0
+httplib2==0.20.4
 idna==3.3
 importlib-metadata==4.11.3
 install==1.3.5
@@ -37,6 +45,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.21
 PyJWT==2.3.0
+pyparsing==3.0.7
 python3-openid==3.2.0
 pytz==2022.1
 requests==2.27.1
@@ -44,5 +53,6 @@ requests-oauthlib==1.3.1
 rsa==4.8
 six==1.16.0
 sqlparse==0.4.2
+uritemplate==4.1.1
 urllib3==1.26.9
 zipp==3.8.0
