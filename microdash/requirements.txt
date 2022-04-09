@@ -5,6 +5,7 @@ certifi==2021.10.8
 charset-normalizer==2.0.12
 Django==4.0.3
 django-environ==0.8.1
+djangorestframework==3.13.1
 google-api-core==2.7.1
 google-auth==2.6.2
 google-cloud-secret-manager==2.10.0
@@ -15,9 +16,11 @@ grpcio-status==1.44.0
 idna==3.3
 proto-plus==1.20.3
 protobuf==3.20.0
-psycopg2==2.9.3
+psycopg==3.0.11
+psycopg2-binary==2.9.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
+pytz==2022.1
 requests==2.27.1
 rsa==4.8
 six==1.16.0
