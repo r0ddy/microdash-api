@@ -62,7 +62,6 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
-    'address',
     'api.apps.ApiConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -72,7 +71,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'address',
+    'djmoney',
 ]
+
+# for dj-rest-auth registration
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
