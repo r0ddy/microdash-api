@@ -26,6 +26,7 @@ class CentralHub(models.Model):
     def __str__(self):
        return self.name 
 
+
 class Eatery(models.Model):
     name = models.CharField(max_length=200)
     centralHub = models.ForeignKey(CentralHub, related_name='eateries', on_delete=models.CASCADE)
@@ -40,9 +41,26 @@ class Item(models.Model):
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
     eatery = models.ForeignKey(Eatery, related_name='items', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "%s: %s" % (self.eatery.name, self.name)
 
 class Menu(models.Model):
+    MEAL_PERIODS = [
+        (1, 'Breakfast'),
+        (2, 'Lunch'),
+        (3, 'Dinner'),
+    ]
     day = DayOfTheWeekField()
-    time = models.TimeField()
+    meal_period = models.IntegerField(choices=MEAL_PERIODS, default=None, null=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "%s %s %s" % (self.day, self.meal_period, self.item.name) 
+
+
+class FullMenu(models.Model):
+    name = models.CharField(max_length=200)
+    menus = models.ManyToManyField(Menu)
+
+    def __str__(self):
+        return "%s" % (self.name)

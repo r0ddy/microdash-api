@@ -2,9 +2,7 @@ from csv import list_dialects
 from django.contrib import admin
 from address.models import AddressField
 from address.forms import AddressWidget
-from .models import CentralHub, Eatery
-
-# admin.site.register(CentralHub)
+from .models import CentralHub, Eatery, FullMenu, Item, Menu
 
 @admin.register(CentralHub)
 class CentralHubAdmin(admin.ModelAdmin):
@@ -27,4 +25,31 @@ class EateryAdmin(admin.ModelAdmin):
     )
 
     formfield_overrides = {AddressField: {"widget": AddressWidget(attrs={"style": "width: 300px;"})}}
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+        "price"
+    )
+
+
+@admin.register(Menu)
+class MenuAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "day",
+        "meal_period",
+        "item",
+    )
+
+
+@admin.register(FullMenu)
+class FullMenuAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+    )
 
