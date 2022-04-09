@@ -13,6 +13,7 @@ class GetEateriesByCentralHubs(APIView):
         ]
         return Response(eateries, status=status.HTTP_200_OK)
 
+
 class GetEateryItems(APIView):
     queryset = Eatery.objects.all()
     def get(self, request, **kwargs):

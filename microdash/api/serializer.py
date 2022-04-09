@@ -15,22 +15,32 @@ class CentralHubSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class EateryNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Eatery
+        fields = [ 'id', 'name' ]
+
+
 class ItemSerializer(serializers.ModelSerializer):
+    eatery = EateryNameSerializer()
     class Meta:
         model = Item
-        fields = [ 'id', 'name', 'price']
+        fields = [ 'id', 'name', 'price', 'eatery' ]
 
 
 class EateryItemsSerializer(serializers.ModelSerializer):
     items = ItemSerializer(many=True)
     class Meta:
         model = Eatery
-        fields = [ 'id', 'name', 'items']
+        fields = [ 'id', 'name', 'items' ]
+
 
 class MenuSerializer(serializers.ModelSerializer):
+    item = ItemSerializer()
     class Meta:
         model = Menu
-        fields = '__all__'
+        fields = [ 'id', 'day', 'meal_period', 'meal_period_str', 'item' ]
+
 
 class FullMenuSerializer(serializers.ModelSerializer):
     menus = MenuSerializer(many=True)

@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from address.models import AddressField
 from djmoney.models.fields import MoneyField
@@ -55,8 +56,13 @@ class Menu(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s %s" % (self.day, self.meal_period, self.item.name) 
-
+        return "%s %s %s" % (self.day, self.meal_period, self.item.name)
+    
+    def meal_period_str(self):
+        return self.MEAL_PERIODS[self.meal_period-1][1]
+    
+    def day_str(self):
+        return DAY_OF_THE_WEEK[self.day]
 
 class FullMenu(models.Model):
     name = models.CharField(max_length=200)
