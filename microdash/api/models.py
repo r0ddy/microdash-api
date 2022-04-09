@@ -41,6 +41,7 @@ class Item(models.Model):
     name = models.CharField(max_length=200)
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
     eatery = models.ForeignKey(Eatery, related_name='items', on_delete=models.CASCADE)
+    photo = models.ImageField(default='', upload_to="item_photos/", null=True, blank=True)
 
     def __str__(self):
         return "%s: %s" % (self.eatery.name, self.name)
