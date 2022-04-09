@@ -62,6 +62,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'address',
     'api.apps.ApiConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -167,3 +168,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+GOOGLE_API_KEY = env("GOOGLE_API_KEY")
