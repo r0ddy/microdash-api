@@ -62,6 +62,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
