@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
 from address.models import AddressField
@@ -31,6 +32,7 @@ class CentralHub(models.Model):
 class Eatery(models.Model):
     name = models.CharField(max_length=200)
     centralHub = models.ForeignKey(CentralHub, related_name='eateries', on_delete=models.CASCADE)
+    photo = models.ImageField(default='', upload_to="eatery_photos/", null=True, blank=True)
     address = AddressField()
 
     def __str__(self):
@@ -42,9 +44,13 @@ class Item(models.Model):
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
     eatery = models.ForeignKey(Eatery, related_name='items', on_delete=models.CASCADE)
     photo = models.ImageField(default='', upload_to="item_photos/", null=True, blank=True)
+    description = models.CharField(max_length=500)
+    ubereats_price = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
+    doordash_price = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
 
     def __str__(self):
         return "%s: %s" % (self.eatery.name, self.name)
+
 
 class Menu(models.Model):
     MEAL_PERIODS = [
@@ -64,6 +70,7 @@ class Menu(models.Model):
     
     def day_str(self):
         return DAY_OF_THE_WEEK[self.day]
+
 
 class FullMenu(models.Model):
     name = models.CharField(max_length=200)

@@ -17,9 +17,19 @@ from urllib.parse import urlparse
 
 import environ
 from google.cloud import secretmanager
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# storage
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'django-app-346321-e42c988fda13.json')
+)
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'django-app-file-storage'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+
 
 env = environ.Env(DEBUG=(bool, False))
 env_file = os.path.join(BASE_DIR, ".env")
