@@ -99,7 +99,7 @@ class Customer(models.Model):
 
 class DeliveryAgent(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    rating = models.DecimalField(max_digits=2, decimal_places=2, default=5.00)
+    rating = models.DecimalField(max_digits=4, decimal_places=2, default=5.00)
     firstName = models.CharField(max_length=20, default='Bobby')
     lastName = models.CharField(max_length=20, default='Apples')
 
@@ -134,6 +134,8 @@ class Order(models.Model):
     def origin(self):
         return self.item.eatery
 
+    def deliveryAgent(self):
+        return self.batch.deliveryAgent if self.batch.deliveryAgent else None
 
 class Invoice(models.Model):
     order = models.ForeignKey(Order, related_name='invoice', on_delete=models.CASCADE)

@@ -1,5 +1,19 @@
 #!/bin/bash
-curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"item_id": 3, "destination": "Tavonga", "lastname": "Tafuma"}' \
-  http://localhost:8000/api/orders/
+# curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
+#   --request POST \
+#   --data '{"item_id": 3, "destination": "138 Pacific Ave, Garfield, NJ 07026"}' \
+#   http://localhost:8000/api/orders/
+
+# curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
+#   --request GET \
+#   http://localhost:8000/api/orders/customer
+
+# curl -H "Authorization: Token 7e35906d9825f57d27b97ed2b97b2be160f0d559" --header "Content-Type: application/json" \
+#   --request POST \
+#   --data '{"is_customer": false, "firstname": "Roddy", "lastname": "Taipe"}' \
+#   http://localhost:8000/api/user/register
+
+
+# curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
+#   --request POST \
+#   http://localhost:8000/api/batch/

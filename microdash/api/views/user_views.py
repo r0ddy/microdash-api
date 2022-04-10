@@ -17,7 +17,7 @@ class RegisterNameAndRole(APIView):
             customer.save()
             res = CustomerSerializer(res).data
         else:
-            delivery = DeliveryAgent(user=request.user, firstName=request.data['firstname'], lastName=request.data['lastname'])
-            delivery.save()
-            res = DeliveryAgentSerializer(delivery)
+            da = DeliveryAgent(user=request.user, firstName=request.data['firstname'], lastName=request.data['lastname'])
+            da.save()
+            res = DeliveryAgentSerializer(da).data
         return Response(res, status=status.HTTP_201_CREATED)

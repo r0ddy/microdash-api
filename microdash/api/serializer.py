@@ -70,14 +70,19 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields = [ 'id', 'name', 'rating' ]
 
 class CustomerOrderSerializer(serializers.ModelSerializer):
-    deliveryAgent = DeliveryAgentSerializer()
+    deliveryAgent = DeliveryAgent()
     item = ItemSerializer()
     class Meta:
         model = Order
-        fields = [ 'id', 'item', 'deliveryAgent', 'expectedArrival' ]
+        fields = [ 'id', 'item', 'expectedArrival', 'deliveryAgent']
 
 class DeliveryAgentOrderSerializer(serializers.ModelSerializer):
     customer = CustomerSerializer()
     class Meta:
         model = Order
         fields = [ 'id', 'item', 'customer', 'destination', 'origin']
+
+class BatchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Batch
+        fields = '__all__'
