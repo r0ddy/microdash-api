@@ -48,14 +48,14 @@ class MenuSerializer(serializers.ModelSerializer):
     item = ItemSerializer()
     class Meta:
         model = Menu
-        fields = [ 'id', 'day', 'meal_period', 'meal_period_str', 'item' ]
+        fields = [ 'id', 'day', 'meal_period', 'meal_period_str', 'item', ]
 
 
 class FullMenuSerializer(serializers.ModelSerializer):
     menus = MenuSerializer(many=True)
     class Meta:
         model = FullMenu
-        fields = '__all__'
+        fields = [ 'name', 'menus', 'total']
 
 
 class DeliveryAgentSerializer(serializers.ModelSerializer):

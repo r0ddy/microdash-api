@@ -66,7 +66,7 @@ if APPENGINE_URL:
     CSRF_TRUSTED_ORIGINS = [APPENGINE_URL]
     SECURE_SSL_REDIRECT = True
 else:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['fe83-68-175-137-228.ngrok.io', 'localhost']
 
 
 # Application definition

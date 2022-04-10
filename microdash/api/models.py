@@ -81,9 +81,15 @@ class FullMenu(models.Model):
     name = models.CharField(max_length=200)
     menus = models.ManyToManyField(Menu)
 
-    def __str__(self):
-        return "%s" % (self.name)
+    def total(self):
+        menus = self.menus.all()
+        total_price = 0
+        for menu in menus:
+            total_price += menu.item.price
+        return (total_price.amount + len(menus)) * 4
 
+    def __str__(self):
+        return "%s $%s" % (self.name, self.total())
 
 class Customer(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
@@ -136,7 +142,30 @@ class Order(models.Model):
 
     def deliveryAgent(self):
         return self.batch.deliveryAgent if self.batch.deliveryAgent else None
+    
+    def __str__(self):
+        return "%s %s" % (self.customer.name(), self.item.name)
 
-class Invoice(models.Model):
+TAX = 1.08
+
+class OrderInvoice(models.Model):
     order = models.ForeignKey(Order, related_name='invoice', on_delete=models.CASCADE)
+    deliveryFee = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
+    serviceFee = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
 
+    def total(self):
+        return self.order.item.price * TAX + self.deliveryFee + self.serviceFee
+    
+    def __str__(self):
+        return "%s * %s + %s + %s = %s" % (self.order.item.price, TAX, self.deliveryFee, self.serviceFee, self.total())
+
+class MealPlan(models.Model):
+    fullMenu = models.ForeignKey(FullMenu, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, related_name='meal_plans', on_delete=models.CASCADE)
+    
+# create one of these every month
+class MealPlanInvoice(models.Model):
+    mealplan = models.ForeignKey(MealPlan, on_delete=models.CASCADE)
+
+    def total(self):
+        return self.mealplan.total() * TAX
