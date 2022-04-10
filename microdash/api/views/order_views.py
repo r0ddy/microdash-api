@@ -64,7 +64,7 @@ def is_time_between(begin_time, end_time, check_time=None):
 
 def get_addr_dict(destination):
     gmaps = googlemaps.Client(key=settings.GOOGLE_API_KEY)
-    geocoded_addr = gmaps.geocode(destination)
+    geocoded_addr = gmaps.geocode(destination)[0]
     addr_dict = {
         'raw': geocoded_addr['formatted_address'],
         'latitude': geocoded_addr['geometry']['location']['lat'],

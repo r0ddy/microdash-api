@@ -48,7 +48,7 @@ class MenuSerializer(serializers.ModelSerializer):
     item = ItemSerializer()
     class Meta:
         model = Menu
-        fields = [ 'id', 'day', 'meal_period', 'meal_period_str', 'item', ]
+        fields = [ 'id', 'day_str', 'meal_period_str', 'item', ]
 
 
 class FullMenuSerializer(serializers.ModelSerializer):
@@ -67,7 +67,7 @@ class DeliveryAgentSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = [ 'id', 'name', 'rating' ]
+        fields = [ 'id', 'name' ]
 
 class CustomerOrderSerializer(serializers.ModelSerializer):
     deliveryAgent = DeliveryAgent()

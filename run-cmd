@@ -1,5 +1,5 @@
 #!/bin/bash
-# curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
+# curl -H "Authorization: Token fe7d80911a50ac57f3db091d27630d062445ad4e" --header "Content-Type: application/json" \
 #   --request POST \
 #   --data '{"item_id": 3, "destination": "107 Maple Ave, Ithaca, NJ 14850"}' \
 #   http://localhost:8000/api/orders/
@@ -18,7 +18,7 @@
 #   --request POST \
 #   http://localhost:8000/api/batch/
 
-curl --header "Content-Type: application/json" \
-  --request POST \
-  -- data '{"username":"person@example.com", "email":"person@example.com", "password1": "wowcool420", "password2": "wowcool420"}' \
-http://localhost:8000/auth/registration/
+# curl --header "Content-Type: application/json" \
+#   --request POST \
+#   -- data '{"username":"person@example.com", "email":"person@example.com", "password1": "wowcool420", "password2": "wowcool420"}' \
+# http://localhost:8000/auth/registration/
