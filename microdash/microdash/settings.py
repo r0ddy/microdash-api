@@ -195,3 +195,5 @@ REST_FRAMEWORK = {
 }
 
 GOOGLE_API_KEY = env("GOOGLE_API_KEY")
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -56,3 +56,28 @@ class FullMenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = FullMenu
         fields = '__all__'
+
+
+class DeliveryAgentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DeliveryAgent
+        fields = [ 'id', 'name', 'rating' ]
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = [ 'id', 'name', 'rating' ]
+
+class CustomerOrderSerializer(serializers.ModelSerializer):
+    deliveryAgent = DeliveryAgentSerializer()
+    item = ItemSerializer()
+    class Meta:
+        model = Order
+        fields = [ 'id', 'item', 'deliveryAgent', 'expectedArrival' ]
+
+class DeliveryAgentOrderSerializer(serializers.ModelSerializer):
+    customer = CustomerSerializer()
+    class Meta:
+        model = Order
+        fields = [ 'id', 'item', 'customer', 'destination', 'origin']
