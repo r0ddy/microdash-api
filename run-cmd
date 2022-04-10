@@ -1,5 +1,5 @@
 #!/bin/bash
 curl -H "Authorization: Token 9dcd8c76b23012c2097f3e56eb532caf319df20b" --header "Content-Type: application/json" \
   --request POST \
-  --data '{"is_customer": true, "firstname": "Tavonga", "lastname": "Tafuma"}' \
-  http://localhost:8000/api/user/register
+  --data '{"item_id": 3, "destination": "Tavonga", "lastname": "Tafuma"}' \
+  http://localhost:8000/api/orders/

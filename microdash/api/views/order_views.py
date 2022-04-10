@@ -18,7 +18,7 @@ class GetOrdersAsCustomer(APIView):
     permission_classes = [IsAuthenticated, ]
     queryset = Order.objects.all()
 
-    def post(self, request):
+    def get(self, request):
         customer = Customer.objects.get(pk=request.user.pk)
         orders = [CustomerOrderSerializer(order).data for order in customer.orders]
         return Response(orders, status=status.HTTP_200_OK)
@@ -29,7 +29,7 @@ class GetOrdersAsDeliveryAgent(APIView):
     permission_classes = [IsAuthenticated, ]
     queryset = Order.objects.all()
 
-    def post(self, request):
+    def get(self, request):
         deliveryAgent = DeliveryAgent.objects.get(pk=request.user.pk)
         orders = [DeliveryAgentOrderSerializer(order).data for order in deliveryAgent.orders]
         return Response(orders, status=status.HTTP_200_OK)
@@ -77,4 +77,8 @@ class CreateOrder(APIView):
         order.save()
         return Response(CustomerOrderSerializer(order).data, status=status.HTTP_201_CREATED)
 
-    
+class DeliverBatch(APIView): 
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [IsAuthenticated, ]
+    def post(self, request):
+        return
