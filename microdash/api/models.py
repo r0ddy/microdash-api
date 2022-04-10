@@ -90,6 +90,12 @@ class Customer(models.Model):
     firstName = models.CharField(max_length=20, default='Tommy')
     lastName = models.CharField(max_length=20, default='Banana')
 
+    def name(self):
+        return "%s %s." % (self.firstName, self.lastName[0])
+
+    def __str__(self):
+        return self.name()
+
 
 class DeliveryAgent(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)

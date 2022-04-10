@@ -2,7 +2,7 @@ from csv import list_dialects
 from django.contrib import admin
 from address.models import AddressField
 from address.forms import AddressWidget
-from .models import CentralHub, Eatery, FullMenu, Item, Menu
+from .models import Batch, CentralHub, Customer, DeliveryAgent, Eatery, FullMenu, Item, Menu, Order
 
 @admin.register(CentralHub)
 class CentralHubAdmin(admin.ModelAdmin):
@@ -53,3 +53,7 @@ class FullMenuAdmin(admin.ModelAdmin):
         "name",
     )
 
+admin.site.register(Customer)
+admin.site.register(DeliveryAgent)
+admin.site.register(Order)
+admin.site.register(Batch)

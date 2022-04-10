@@ -18,7 +18,7 @@ class GetOrdersAsCustomer(APIView):
     permission_classes = [IsAuthenticated, ]
     queryset = Order.objects.all()
 
-    def get(self, request):
+    def post(self, request):
         customer = Customer.objects.get(pk=request.user.pk)
         orders = [CustomerOrderSerializer(order).data for order in customer.orders]
         return Response(orders, status=status.HTTP_200_OK)
@@ -29,7 +29,7 @@ class GetOrdersAsDeliveryAgent(APIView):
     permission_classes = [IsAuthenticated, ]
     queryset = Order.objects.all()
 
-    def get(self, request):
+    def post(self, request):
         deliveryAgent = DeliveryAgent.objects.get(pk=request.user.pk)
         orders = [DeliveryAgentOrderSerializer(order).data for order in deliveryAgent.orders]
         return Response(orders, status=status.HTTP_200_OK)
@@ -39,7 +39,7 @@ def getAddressDictionary(geocoded_addr):
     addr_dict = {
         'raw': geocoded_addr['formatted_address'],
         'lat': geocoded_addr['bounds']['location']['lat'],
-        'lng': geocoded_addr['bounds']['location']['lat']
+        'lng': geocoded_addr['bounds']['location']['lng']
     }
     for addr_comp in geocoded_addr['address_components']:
         for addr_comp_type in addr_comp['types']:
